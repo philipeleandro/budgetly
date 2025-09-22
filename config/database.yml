@@ -1,0 +1,34 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: <%= ENV.fetch("DB_HOST") %>
+  username: <%= ENV.fetch("DATABASE_USERNAME") { "postgres" } %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") { "postgres" } %>
+
+
+development:
+  <<: *default
+  database: budgtly_development
+
+test:
+  <<: *default
+  database: budgtly_test
+
+production:
+  primary:
+    <<: *default
+    database: <%= ENV.fetch("DATABASE_NAME") { "budgtly_production" } %>
+
+  cable:
+    <<: *default
+    database: <%= ENV.fetch("DATABASE_NAME_CABLE") { "budgtly_production_cable" } %>
+
+  queue:
+    <<: *default
+    database: <%= ENV.fetch("DATABASE_NAME_QUEUE") { "budgtly_production_queue" } %>
+
+  cache:
+    <<: *default
+    database: <%= ENV.fetch("DATABASE_NAME_CACHE") { "budgtly_production_cache" } %>
+
