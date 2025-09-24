@@ -6,8 +6,6 @@ ARG RUBY_VERSION=3.3.1
 FROM ruby:$RUBY_VERSION-slim
 
 # Definir variáveis de ambiente para Rails
-ENV RAILS_ENV=production
-ENV BUNDLE_WITHOUT=development:test
 ENV RAILS_SERVE_STATIC_FILES=true
 
 # Secret key base temporário apenas para compilação de assets
@@ -39,6 +37,8 @@ WORKDIR /app
 # Copiar Gemfile e instalar dependências
 COPY Gemfile Gemfile.lock ./
 RUN bundle install --jobs 4 --retry 3
+
+RUN chown -R app:app /usr/local/bundle
 
 # Copiar o código da aplicação
 COPY --chown=app:app . .
