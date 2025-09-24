@@ -20,6 +20,12 @@ group :development, :test do
   gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
   gem "brakeman", require: false
   gem "rubocop-rails-omakase", require: false
+  gem "factory_bot_rails"
+  gem "rspec-rails", "~> 8.0.0"
+end
+
+group :test do
+  gem "simplecov", require: false
 end
 
 group :development do
