@@ -8,26 +8,26 @@ default: &default
 
 development:
   <<: *default
-  database: budgtly_development
+  database: budgetly_development
 
 test:
   <<: *default
-  database: budgtly_test
+  database: budgetly_test
 
 production:
   primary:
     <<: *default
-    database: <%= ENV.fetch("DATABASE_NAME") { "budgtly_production" } %>
+    database: <%= ENV.fetch("DATABASE_NAME") { "budgetly_production" } %>
 
   cable:
     <<: *default
-    database: <%= ENV.fetch("DATABASE_NAME_CABLE") { "budgtly_production_cable" } %>
+    database: <%= ENV.fetch("DATABASE_NAME_CABLE") { "budgetly_production_cable" } %>
 
   queue:
     <<: *default
-    database: <%= ENV.fetch("DATABASE_NAME_QUEUE") { "budgtly_production_queue" } %>
+    database: <%= ENV.fetch("DATABASE_NAME_QUEUE") { "budgetly_production_queue" } %>
 
   cache:
     <<: *default
-    database: <%= ENV.fetch("DATABASE_NAME_CACHE") { "budgtly_production_cache" } %>
+    database: <%= ENV.fetch("DATABASE_NAME_CACHE") { "budgetly_production_cache" } %>
 
