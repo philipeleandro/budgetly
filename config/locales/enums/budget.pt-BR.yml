@@ -1,0 +1,5 @@
+pt-BR:
+  enumerations:
+    budget/status:
+      active: Ativo
+      inactive: Inativo
